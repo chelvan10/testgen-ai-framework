@@ -1,0 +1,1 @@
+Login with valid user and verify dashboard shows welcome message.

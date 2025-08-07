@@ -1,0 +1,26 @@
+name: Generate and Run Tests from Prompts
+
+on:
+  push:
+    paths:
+      - 'prompts/**.txt'
+
+jobs:
+  testgen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build and run agent server
+        run: |
+          docker build -t testgen-agent-server ./agent-server
+          docker run -d -p 4000:4000 --name testgen testgen-agent-server
+      - name: Submit prompts
+        run: |
+          for f in prompts/*.txt; do
+            curl -X POST http://localhost:4000/generate-test -H "Content-Type: application/json" -d "{"prompt": "$(cat $f)"}"
+          done
+      - name: Run Playwright Tests
+        run: |
+          npm install
+          npx playwright install
+          npx playwright test

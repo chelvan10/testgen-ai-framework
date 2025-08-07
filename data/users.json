@@ -1,0 +1,19 @@
+{
+  "loginUsers": [
+    {
+      "email": "admin@example.com",
+      "password": "AdminPass123",
+      "role": "admin"
+    },
+    {
+      "email": "user@example.com",
+      "password": "UserPass123",
+      "role": "user"
+    },
+    {
+      "email": "manager@example.com",
+      "password": "ManagerPass123",
+      "role": "manager"
+    }
+  ]
+}

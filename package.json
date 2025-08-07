@@ -1,0 +1,12 @@
+{
+  "name": "testgen-ai-framework",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node agent-server/server.js",
+    "test": "npx playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0"
+  }
+}
